@@ -1,25 +1,39 @@
-﻿namespace Modelos
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Modelos
 {
     public class Usuario
     {
         public Usuario()
         {
-            Nombre = "pablo";
-            NombreUsuario = "pablodob";
-            Id = 1;
+            //Nombre = "pablo";
+            //NombreUsuario = "pablodob";
         }
 
         public Usuario(string nombre,
                        string nombreUsuario,
-                       int id)
+                       int id
+            )
         {
             Nombre = nombre;
             NombreUsuario = nombreUsuario;
             Id = id;
         }
+        /*
+        public Usuario(string nombre,
+               string nombreUsuario)
+        {
+            Nombre = nombre;
+            NombreUsuario = nombreUsuario;
+        }*/
 
-        public string Nombre { get; set; }
-        public string NombreUsuario { get; set; }
+
+        public string? Nombre { get; set; }
+        public string? NombreUsuario { get; set; }
+        
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         public override bool Equals(object? obj)

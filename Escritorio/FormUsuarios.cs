@@ -8,7 +8,7 @@ namespace Escritorio
         public FormUsuarios()
         {
             InitializeComponent();
-            //dataGridView1.DataSource = cargarTabla();
+            dataGridView1.DataSource = cargarTabla();
         }
 
         private List<Usuario> cargarTabla()
@@ -25,21 +25,58 @@ namespace Escritorio
 
         private void button2_Click(object sender, EventArgs e)
         {
-            int filaSeleccionada = dataGridView1.SelectedRows[0].Index;
-            new FormDataUsuarios(usuarios[filaSeleccionada]).ShowDialog();
+            int filaSeleccionada;
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                if (dataGridView1.SelectedCells.Count > 0)
+                {
+                    filaSeleccionada = dataGridView1.SelectedCells[0].RowIndex;
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                filaSeleccionada = dataGridView1.SelectedRows[0].Index;
+            }
+            if (usuarios != null) {
+                new FormDataUsuarios(usuarios[filaSeleccionada]).ShowDialog();
+            }
             button4_Click(sender, e);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            int filaSeleccionada = dataGridView1.SelectedRows[0].Index;
-            Usuarios.Delete(usuarios[filaSeleccionada]);
-            button4_Click(sender, e);
+            int filaSeleccionada;
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                if (dataGridView1.SelectedCells.Count > 0)
+                {
+                    filaSeleccionada = dataGridView1.SelectedCells[0].RowIndex;
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                filaSeleccionada = dataGridView1.SelectedRows[0].Index;
+            }
+            if (usuarios != null)
+            {
+                Usuarios.Delete(usuarios[filaSeleccionada]);
+            }
+                button4_Click(sender, e);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = null;
             dataGridView1.DataSource = cargarTabla();
         }
+
     }
 }

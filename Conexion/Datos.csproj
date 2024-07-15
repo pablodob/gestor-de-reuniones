@@ -13,7 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Conexion\Datos.csproj" />
     <ProjectReference Include="..\Usuario\Modelos.csproj" />
   </ItemGroup>
 

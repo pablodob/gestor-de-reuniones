@@ -25,8 +25,8 @@ namespace Escritorio
         {
             InitializeComponent();
             button1.Text = "Editar";
-            textBox1.Text = usuarioAModificar.Nombre;
-            textBox2.Text = usuarioAModificar.NombreUsuario;
+            textBox1.Text = usuarioAModificar.NombreUsuario;
+            textBox2.Text = usuarioAModificar.Nombre;
             label4.Text = Convert.ToString(usuarioAModificar.Id);
         }
 
@@ -35,11 +35,12 @@ namespace Escritorio
             Usuario u = new Usuario();
             u.NombreUsuario = textBox1.Text;
             u.Nombre = textBox2.Text;
-            u.Id = 5;
-            Console.WriteLine(u);
-            Console.WriteLine(u.Nombre);
             if (button1.Text == "Editar")
+            {
+                //u.Id = Convert.ToInt32(label4.Text);
+                u.Id = 4;
                 Usuarios.Update(u);
+            }
             else Usuarios.Add(u);
             Dispose();
         }
