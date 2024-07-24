@@ -17,7 +17,7 @@ namespace Datos
             if (instancia == null)
             {
                 var optionsBuilder = new DbContextOptionsBuilder<Conexion>();
-                optionsBuilder.UseSqlServer(@"Data Source=localhost;Initial Catalog=reuniones2;TrustServerCertificate=True;Integrated Security=True;");
+                optionsBuilder.UseSqlServer(@"Data Source=JULIETA-NOTE\SQLEXPRESS;Initial Catalog=reuniones2;TrustServerCertificate=True;Integrated Security=True;");
                 instancia = new Conexion(optionsBuilder.Options);
             }
             return instancia;
